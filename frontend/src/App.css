@@ -1,0 +1,386 @@
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 280px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, var(--accent), #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-new {
+  width: 100%;
+  padding: 0.6rem;
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btn-new:hover {
+  background: var(--accent-hover);
+}
+
+.btn-docs {
+  margin: 0.75rem 1rem;
+  padding: 0.5rem;
+  background: var(--surface-hover);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.btn-docs:hover {
+  color: var(--text);
+}
+
+.conv-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.conv-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.conv-item:hover {
+  background: var(--surface-hover);
+}
+
+.conv-item.active {
+  background: var(--surface-hover);
+  border-left: 3px solid var(--accent);
+}
+
+.conv-title {
+  flex: 1;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conv-delete {
+  opacity: 0;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  padding: 0 0.25rem;
+}
+
+.conv-item:hover .conv-delete {
+  opacity: 1;
+}
+
+.conv-delete:hover {
+  color: #ef4444;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.chat-header h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.demo-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.rag-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.rag-toggle input {
+  accent-color: var(--accent);
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.empty-state {
+  margin: auto;
+  text-align: center;
+  max-width: 400px;
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state h2 {
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.message {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 800px;
+}
+
+.message.user {
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--surface-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.message.user .avatar {
+  background: var(--accent);
+  color: white;
+}
+
+.bubble {
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius);
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+.message.user .bubble {
+  background: var(--user-bubble);
+  color: white;
+}
+
+.message.assistant .bubble {
+  background: var(--assistant-bubble);
+  border: 1px solid var(--border);
+}
+
+.bubble p {
+  margin-bottom: 0.5rem;
+}
+
+.bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.bubble code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.bubble pre {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.75rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+.typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 1rem !important;
+}
+
+.typing span {
+  width: 8px;
+  height: 8px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing span:nth-child(1) { animation-delay: -0.32s; }
+.typing span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+.input-area {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.input-area textarea {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  resize: none;
+  max-height: 120px;
+}
+
+.input-area textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.input-area button {
+  padding: 0 1.25rem;
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius);
+  font-weight: 500;
+}
+
+.input-area button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.doc-panel {
+  width: 320px;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.doc-panel header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.doc-panel header h2 {
+  font-size: 1rem;
+}
+
+.doc-panel header button {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+}
+
+.doc-hint {
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.upload-btn {
+  margin: 0 1rem;
+  padding: 0.65rem;
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius);
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.doc-error {
+  color: #ef4444;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+}
+
+.doc-list {
+  list-style: none;
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 1rem;
+}
+
+.doc-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: var(--surface-hover);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.doc-list li strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.doc-list li span {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.doc-list li button {
+  color: #ef4444;
+  font-size: 0.8rem;
+}
